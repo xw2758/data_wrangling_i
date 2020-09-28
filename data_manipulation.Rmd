@@ -1,0 +1,106 @@
+---
+title: "data manipulation"
+author: "Xinyi Wang"
+date: "9/28/2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+## laod in FAS
+
+```{r}
+litters_df = read_csv("FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+
+## select
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+```{r}
+select(litters_df, GROUP = group, liTTer_num = litter_number)
+```
+
+```{r}
+rename(litters_df, GROUP = group, liTTer_num = litter_number)
+```
+
+
+Select helps
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+```{r}
+relocate(litters_df, litter_number)
+```
+
+```{r}
+
+```
+
+## `filter`
+
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 22)
+```
+
+```{r}
+filter(litters_df, gd_of_weight == 22)
+```
+
+```{r}
+filter(litters_df, !gd_of_birth == 20)
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 20, gd_of_birth == 20)
+```
+
+```{r}
+filter(litters_df, group == "Con7")
+```
+
+```{r}
+filter(litters_df, group %in% c("Con7","Mod8"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
